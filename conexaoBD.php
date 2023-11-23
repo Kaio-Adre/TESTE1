@@ -9,4 +9,6 @@
     if(!$conn){
         die("Conexão Falhou!".mysqli_connect_error());
     } 
+
+    //alterado
 ?>
