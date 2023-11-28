@@ -1,0 +1,94 @@
+CREATE DATABASE clinicaSenac;
+USE clinicaSenac;
+
+CREATE TABLE tb_nivelSatisfacao(
+	id int not null AUTO_INCREMENT,
+    excelente int,
+    bom int,
+    ruim int,
+    pessimo int,
+    sim int,
+    nao int,
+    dataServico date,
+    
+    PRIMARY KEY(id)
+);
+
+
+use clinicasenac;
+
+CREATE TABLE tb_medicos(
+	idmed int NOT null AUTO_INCREMENT,
+    nome varchar(100),
+    endereco varchar(150),
+    bairro varchar(50),
+    cidade varchar(30),
+    cpf varchar(20),
+    valCon float,
+    stat varchar(20),
+    por float,
+    crm varchar(30),
+    especialidade varchar(50),
+    
+    PRIMARY KEY(idmed)
+);
+
+CREATE TABLE tb_pacientes(
+	idPac int NOT null AUTO_INCREMENT,
+    nome varchar(100),
+    endereco varchar(150),
+    bairro varchar(50),
+    cidade varchar(30),
+    uf varchar(50),
+    cpf varchar(20),
+    sexo varchar(100),
+    data_nasc date,
+    celualr varchar(30),
+    email varchar(30),
+    
+    PRIMARY KEY(idpac)
+);
+
+CREATE TABLE tb_funcionarios(
+	idFun int NOT null AUTO_INCREMENT,
+    nome varchar(100),
+    endereco varchar(150),
+    bairro varchar(50),
+    cidade varchar(30),
+    uf varchar(50),
+    cpf varchar(20),
+    sexo varchar(100),
+    data_nasc date,
+    celualr varchar(30),
+    email varchar(30),
+    login varchar(30),
+    senha varchar(100),
+    
+    PRIMARY KEY(idpac)
+);
+
+CREATE TABLE tb_consultas(
+	idCon int not null AUTO_INCREMENT,
+    data_consulta date,
+    retorno date,
+    hora time,
+    obs varchar(500),
+    cidade varchar(50),
+    convenio varchar(100),
+    medico varchar(150),
+    paciente varchar(100),
+    especialidade varchar(100),
+    confirmada varchar(30),
+    valor float,
+    pagamento varchar(50),
+    
+    PRIMARY KEY(idCon),
+    FOREIGN KEY(fk_idFun) REFERENCES tb_funcionarios(idFun),
+    FOREIGN KEY(fk_idMed) REFERENCES tb_medicos(idMed),
+    FOREIGN KEY(fk_idPac) REFERENCES tb_pacientes(idPac)
+);
+
+
+ALTER TABLE tb_pacientes CHANGE celualr celular varchar(30);
+
+
